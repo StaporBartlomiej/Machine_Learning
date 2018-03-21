@@ -1,4 +1,3 @@
-# Example of Naive Bayes implemented from Scratch in Python
 import csv
 import random
 import math
@@ -164,6 +163,7 @@ def main():
     print("Library one:")
     print(metrics.classification_report(expected,predicted))
     print(metrics.confusion_matrix(expected,predicted))
+    # print(dataset.data)
 
 
 main()
