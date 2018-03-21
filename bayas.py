@@ -2,8 +2,10 @@
 import csv
 import random
 import math
+
+from sklearn import datasets
+from sklearn import metrics
 from sklearn.naive_bayes import GaussianNB
-import numpy as np
 
 
 def loadCsv(filename):
@@ -153,6 +155,15 @@ def main():
     print("Confusion Matrix:" + str(confustionMatrixResult))
     print("Precision: " + str(precisionResult))
     print("Recall: " + str(recallResult))
+
+    model = GaussianNB()
+    dataset = datasets.load_diabetes()
+    model.fit(dataset.data, dataset.target)
+    expected = dataset.target
+    predicted = model.predict(dataset.data)
+    print("Library one:")
+    print(metrics.classification_report(expected,predicted))
+    print(metrics.confusion_matrix(expected,predicted))
 
 
 main()
